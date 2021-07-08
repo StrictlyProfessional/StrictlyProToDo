@@ -1,8 +1,10 @@
 package com.revature.beans;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name = "workouts")
@@ -20,14 +23,13 @@ public class Workout {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "user_id")
-	@ManyToOne
 	@JoinColumn(name = "username")
 	private int userId;
 	private String name;
 	@Column(name = "exercise_ids")
-	@OneToMany
 	@JoinColumn(name = "exercise_name")
-	private ArrayList<Integer> eids;
+	@ElementCollection(targetClass = Integer.class)
+	private List<Integer> eids;
 
 	public Workout() {
 		super();
@@ -65,7 +67,7 @@ public class Workout {
 		this.name = name;
 	}
 
-	public ArrayList<Integer> getEids() {
+	public List<Integer> getEids() {
 		return eids;
 	}
 
