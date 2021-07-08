@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,25 +23,25 @@ public class Workout {
 	@Column(name = "id", insertable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name = "user_id")
+	//@Column(name = "user_id")
+	@ManyToOne
 	@JoinColumn(name = "username")
-	private int userId;
+	private User user_id;
 	private String name;
-	@Column(name = "exercise_ids")
-	@JoinColumn(name = "exercise_name")
-	@ElementCollection(targetClass = Integer.class)
-	private List<Integer> eids;
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "name")
+	private List<Exercise> exercise_ids;
 
 	public Workout() {
 		super();
 	}
 
-	public Workout(int id, int userId, String name, ArrayList<Integer> eids) {
+	public Workout(int id, User userId, String name, ArrayList<Exercise> eids) {
 		super();
 		this.id = id;
-		this.userId = userId;
+		this.user_id = userId;
 		this.name = name;
-		this.eids = eids;
+		this.exercise_ids = eids;
 	}
 
 	public int getId() {
@@ -51,12 +52,12 @@ public class Workout {
 		this.id = id;
 	}
 
-	public int getUserId() {
-		return userId;
+	public User getUserId() {
+		return user_id;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserId(User userId) {
+		this.user_id = userId;
 	}
 
 	public String getName() {
@@ -67,22 +68,24 @@ public class Workout {
 		this.name = name;
 	}
 
-	public List<Integer> getEids() {
-		return eids;
+	public List<Exercise> getEids() {
+		return exercise_ids;
 	}
 
-	public void setEids(ArrayList<Integer> eids) {
-		this.eids = eids;
+	public void setEids(ArrayList<Exercise> eids) {
+		this.exercise_ids = eids;
 	}
+
+	
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((eids == null) ? 0 : eids.hashCode());
+		result = prime * result + ((exercise_ids == null) ? 0 : exercise_ids.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + userId;
+		result = prime * result + ((user_id == null) ? 0 : user_id.hashCode());
 		return result;
 	}
 
@@ -95,10 +98,10 @@ public class Workout {
 		if (getClass() != obj.getClass())
 			return false;
 		Workout other = (Workout) obj;
-		if (eids == null) {
-			if (other.eids != null)
+		if (exercise_ids == null) {
+			if (other.exercise_ids != null)
 				return false;
-		} else if (!eids.equals(other.eids))
+		} else if (!exercise_ids.equals(other.exercise_ids))
 			return false;
 		if (id != other.id)
 			return false;
@@ -107,14 +110,17 @@ public class Workout {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (userId != other.userId)
+		if (user_id == null) {
+			if (other.user_id != null)
+				return false;
+		} else if (!user_id.equals(other.user_id))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Workout [id=" + id + ", userId=" + userId + ", name=" + name + ", eids=" + eids + "]";
+		return "Workout [id=" + id + ", userId=" + user_id + ", name=" + name + ", eids=" + exercise_ids + "]";
 	}
 
 }
