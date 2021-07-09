@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Set up connection info -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://firstdb.clxi91edpc7j.us-east-2.rds.amazonaws.com:5432/postgres</property>
+        <property name="hibernate.connection.username">Hector</property>
+        <property name="hibernate.connection.password">password</property>
+		<property name="hibernate.default_schema">project2</property>
+
+        <!-- Hibernate Setup -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="use_sql_comments">true</property>
+
+        <!-- tell hibernate where to find our mappings -->
+        <mapping class="com.revature.beans.User"></mapping>
+        <mapping class="com.revature.beans.Exercise"></mapping>
+        <mapping class="com.revature.beans.Workout"></mapping>
+        <mapping class="com.revature.beans.CustomExercise"></mapping>
+
+    </session-factory>
+
+</hibernate-configuration>

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.revature.beans.User;
 
 @Repository
-public interface UserRepo extends CrudRepository<User, Integer> {
-
+public interface UserRepo extends CrudRepository<User, Integer>, UserCustomRepo {
 	
 }
