@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.User;
+import com.revature.beans.Workout;
+import com.revature.services.ExerciseServiceImpl;
 import com.revature.services.UserServiceImpl;
+import com.revature.services.WorkoutServiceImpl;
 
 @RestController
 @RequestMapping(path = "/strictly")
@@ -19,10 +22,12 @@ import com.revature.services.UserServiceImpl;
 public class FrontController {
 	
 	private UserServiceImpl us;
+	private WorkoutServiceImpl ws;
 	
 	@Autowired
-	public FrontController(UserServiceImpl us) {
+	public FrontController(UserServiceImpl us, WorkoutServiceImpl ws ) {
 		this.us = us;
+		this.ws = ws;
 	}
 	
 	/**************GET*********************/
@@ -32,8 +37,11 @@ public class FrontController {
 		return us.getAll();
 	}
 	
-	
-	
+	// All Workouts
+	@GetMapping(produces = "application/json", path = "/workouts")
+	public ArrayList<Workout> getAllWorkouts() {
+		return ws.getAll();
+	}
 	
 	
 	
