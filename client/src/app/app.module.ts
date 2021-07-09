@@ -11,6 +11,8 @@ import { AddexerciseComponent } from './components/addexercise/addexercise.compo
 import { ExerciseComponent } from './components/exercise/exercise.component';
 import { WorkoutComponent } from './components/workout/workout.component';
 import { LeaderboardCardComponent } from './components/leaderboard-card/leaderboard-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LeaderboardService } from './services/leaderboard/leaderboard.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,10 @@ import { LeaderboardCardComponent } from './components/leaderboard-card/leaderbo
     LeaderboardCardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LeaderboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,11 +2,11 @@ package com.revature.services;
 
 import java.util.ArrayList;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.beans.CustomExercise;
-import com.revature.repos.CustomExerciseRepo;
 
 public class CustomExerciseImpl implements GenericService<CustomExercise> {
 
