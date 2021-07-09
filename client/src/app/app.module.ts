@@ -13,6 +13,7 @@ import { WorkoutComponent } from './components/workout/workout.component';
 import { LeaderboardCardComponent } from './components/leaderboard-card/leaderboard-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LeaderboardService } from './services/leaderboard/leaderboard.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LeaderboardService } from './services/leaderboard/leaderboard.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [LeaderboardService],
   bootstrap: [AppComponent]
