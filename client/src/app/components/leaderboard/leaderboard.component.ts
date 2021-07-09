@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/classes/User';
+import { LeaderboardService } from 'src/app/services/leaderboard/leaderboard.service';
 
 @Component({
   selector: 'app-leaderboard',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaderboardComponent implements OnInit {
 
-  constructor() { }
+  private error = "lol didnt work";
+  users: User[] = [];
+  isLoaded: boolean = false;
+
+  constructor(private LeaderboardService: LeaderboardService) { }
 
   ngOnInit(): void {
   }
 
+  getUsers() {
+    this.LeaderboardService.getUsers().subscribe(
+      allUsers => this.users = allUsers,
+      err => this.error = err
+    );
+    this.isLoaded = true;
+  }
 }
