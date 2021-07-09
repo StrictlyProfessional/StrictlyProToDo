@@ -37,6 +37,15 @@ public class UserServiceImpl implements GenericService<User> {
 	public User update(User u) {
 		return ur.save(u);
 	}
+	
+	public User login(String username, String password) {
+		User u = ur.login(username, password);
+		if(u == null) {
+			return null;
+		} else {
+			return u;
+		}
+	}
 
 	@Override
 	public boolean delete(int id) {
