@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.revature.beans.User;
 import com.revature.beans.Workout;
 import com.revature.repos.UserRepo;
+import com.revature.repos.WorkoutDao;
 import com.revature.repos.WorkoutRepo;
 import com.revature.services.GenericService;
 import com.revature.services.UserServiceImpl;
@@ -15,9 +16,12 @@ import com.revature.services.WorkoutServiceImpl;
 class StrictlyProToDoApplicationTests {
 	private UserRepo ur;
 	private WorkoutRepo wr;
+	private WorkoutDao wd;
 	
 	GenericService<User> us = new UserServiceImpl(ur);
 	GenericService<Workout> ws = new WorkoutServiceImpl(wr);
+	WorkoutDao wdd = new WorkoutDao();
+	
 	
 	
 	
@@ -33,6 +37,11 @@ class StrictlyProToDoApplicationTests {
 	@Test
 	void getAllWorkouts() {
 		System.out.println(ws.getAll());
+	}
+	
+	@Test 
+	void getWorkoutByUser() {
+		System.out.println(wdd.getWorkoutByUser(1));
 	}
 
 }

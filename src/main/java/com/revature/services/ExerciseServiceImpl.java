@@ -3,10 +3,12 @@ package com.revature.services;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.beans.Exercise;
 import com.revature.repos.ExerciseRepo;
 
+@Service
 public class ExerciseServiceImpl implements GenericService<Exercise> {
 
 	private ExerciseRepo er;
@@ -18,8 +20,7 @@ public class ExerciseServiceImpl implements GenericService<Exercise> {
 	
 	@Override
 	public Exercise getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return er.findById(id).get();
 	}
 
 	@Override
