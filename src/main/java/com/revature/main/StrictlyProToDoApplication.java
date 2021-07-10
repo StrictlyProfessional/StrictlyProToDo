@@ -17,7 +17,7 @@ public class StrictlyProToDoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StrictlyProToDoApplication.class, args);
 		
-		
+		System.out.println("test");
 	}
 
 }
