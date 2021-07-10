@@ -7,3 +7,9 @@
     FAF9F9 Cultured
     FFD6BA Apricot 
 */
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: HelveticaNeue, Helvetica, sans-serif;
+}
