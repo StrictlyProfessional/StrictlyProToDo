@@ -23,7 +23,7 @@ public class Workout {
 	@Column(name = "id", insertable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	//@Column(name = "user_id")
+	// @Column(name = "user_id")
 	@ManyToOne
 	@JoinColumn(name = "username")
 	private User user;
@@ -34,14 +34,15 @@ public class Workout {
 
 	public Workout() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Workout(int id, User userId, String name, ArrayList<Exercise> eids) {
+	public Workout(int id, User user, String name, List<Exercise> exercises) {
 		super();
 		this.id = id;
-		this.user = userId;
+		this.user = user;
 		this.name = name;
-		this.exercises = eids;
+		this.exercises = exercises;
 	}
 
 	public int getId() {
@@ -52,12 +53,12 @@ public class Workout {
 		this.id = id;
 	}
 
-	public User getUserId() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUserId(User userId) {
-		this.user = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getName() {
@@ -68,15 +69,13 @@ public class Workout {
 		this.name = name;
 	}
 
-	public List<Exercise> getEids() {
+	public List<Exercise> getExercises() {
 		return exercises;
 	}
 
-	public void setEids(ArrayList<Exercise> eids) {
-		this.exercises = eids;
+	public void setExercises(List<Exercise> exercises) {
+		this.exercises = exercises;
 	}
-
-	
 
 	@Override
 	public int hashCode() {
@@ -120,7 +119,7 @@ public class Workout {
 
 	@Override
 	public String toString() {
-		return "Workout [id=" + id + ", userId=" + user + ", name=" + name + ", eids=" + exercises + "]";
+		return "Workout [id=" + id + ", user=" + user + ", name=" + name + ", exercises=" + exercises + "]";
 	}
 
 }
