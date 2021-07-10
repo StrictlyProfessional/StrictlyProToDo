@@ -10,7 +10,7 @@ import { User } from 'src/app/classes/User';
 })
 export class LeaderboardService {
 
-  private leaderboardURL = 'http://localhost:8080/user'
+  private leaderboardURL = 'http://localhost:8080/strictly/users'
 
   constructor(private http: HttpClient) { }
 
