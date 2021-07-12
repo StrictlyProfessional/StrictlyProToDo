@@ -49,7 +49,7 @@ public class FrontController {
 	}
 	//Leaderboard
 	@GetMapping(produces ="application/json",path ="/leaderboard")
-	public ArrayList<User> getLeaderboard() throws SQLException{
+	public User[] getLeaderboard() throws SQLException{
 		return ls.getLeaderboard();
 	}
 	
