@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.User;
 import com.revature.beans.Workout;
+import com.revature.repos.LeaderboardRepo;
 import com.revature.services.ExerciseServiceImpl;
+import com.revature.services.LeaderboardServiceImpl;
 import com.revature.services.UserServiceImpl;
 import com.revature.services.WorkoutServiceImpl;
 
@@ -23,9 +26,10 @@ public class FrontController {
 	
 	private UserServiceImpl us;
 	private WorkoutServiceImpl ws;
+	private LeaderboardServiceImpl lr;
 	
 	@Autowired
-	public FrontController(UserServiceImpl us, WorkoutServiceImpl ws ) {
+	public FrontController(UserServiceImpl us, WorkoutServiceImpl ws  ) {
 		this.us = us;
 		this.ws = ws;
 	}
@@ -42,7 +46,11 @@ public class FrontController {
 	public ArrayList<Workout> getAllWorkouts() {
 		return ws.getAll();
 	}
-	
+	//Leaderboard
+	@GetMapping(produces ="application/json",path ="/leaderboard")
+	public ArrayList<User> getLeaderboard() throws SQLException{
+		return lr.getLeaderboard();
+	}
 	
 	
 	
