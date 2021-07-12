@@ -14,10 +14,13 @@ public class Exercise {
 	@Column(name = "id", insertable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	@Column(name = "exercise_name")
 	private String name;
+	
 	@Column(name = "exercise_description")
 	private String description;
+	
 	private boolean completed;
 
 	public Exercise() {
