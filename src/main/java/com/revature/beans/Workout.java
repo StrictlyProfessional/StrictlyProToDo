@@ -44,10 +44,6 @@ public class Workout {
 	@JoinTable(name = "workout_customexercise_map", joinColumns = @JoinColumn(name = "workout_map"), inverseJoinColumns = @JoinColumn(name = "customexercise_map"))
 	private List<CustomExercise> customExercises = new ArrayList<>();
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "workout_customexercise_map", joinColumns = @JoinColumn(name = "workout_map"), inverseJoinColumns = @JoinColumn(name = "customexercise_map"))
-	private List<Integer> indexs = new ArrayList<>();
-	
 	@Transient
 	private ArrayList<Object> combinedExercises;
 
