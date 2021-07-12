@@ -26,12 +26,13 @@ public class FrontController {
 	
 	private UserServiceImpl us;
 	private WorkoutServiceImpl ws;
-	private LeaderboardServiceImpl lr;
+	private LeaderboardServiceImpl ls;
 	
 	@Autowired
-	public FrontController(UserServiceImpl us, WorkoutServiceImpl ws  ) {
+	public FrontController(UserServiceImpl us, WorkoutServiceImpl ws, LeaderboardServiceImpl ls  ) {
 		this.us = us;
 		this.ws = ws;
+		this.ls = ls;
 	}
 	
 	/**************GET*********************/
@@ -49,7 +50,7 @@ public class FrontController {
 	//Leaderboard
 	@GetMapping(produces ="application/json",path ="/leaderboard")
 	public ArrayList<User> getLeaderboard() throws SQLException{
-		return lr.getLeaderboard();
+		return ls.getLeaderboard();
 	}
 	
 	
