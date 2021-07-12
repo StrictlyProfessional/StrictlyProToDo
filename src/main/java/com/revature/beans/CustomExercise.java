@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity(name = "custom_exercises")
 @Table(name = "custom_exercises")
@@ -14,25 +18,32 @@ public class CustomExercise {
 	@Column(name = "id", insertable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
 	@Column(name = "exercise_name")
 	private String name;
+
 	@Column(name = "exercise_description")
 	private String description;
+
 	private boolean completed;
-	@Column(name = "user_id")
-	private int userId;
+
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	public CustomExercise() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public CustomExercise(int id, String name, String description, boolean completed, int userId) {
+	public CustomExercise(int id, String name, String description, boolean completed, User user) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.completed = completed;
-		this.userId = userId;
+		this.user = user;
 	}
 
 	public int getId() {
@@ -67,12 +78,12 @@ public class CustomExercise {
 		this.completed = completed;
 	}
 
-	public int getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
@@ -83,7 +94,7 @@ public class CustomExercise {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + userId;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -110,7 +121,10 @@ public class CustomExercise {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (userId != other.userId)
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
@@ -118,7 +132,7 @@ public class CustomExercise {
 	@Override
 	public String toString() {
 		return "CustomExercise [id=" + id + ", name=" + name + ", description=" + description + ", completed="
-				+ completed + ", userId=" + userId + "]";
+				+ completed + ", user=" + user + "]";
 	}
 
 }
