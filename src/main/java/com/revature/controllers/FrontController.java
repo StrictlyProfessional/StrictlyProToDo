@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,49 +23,52 @@ import com.revature.services.WorkoutServiceImpl;
 @RequestMapping(path = "/strictly")
 @CrossOrigin(allowCredentials = "true", origins = "http://localhost:8080")
 public class FrontController {
-
+	
 	private UserServiceImpl us;
 	private WorkoutServiceImpl ws;
 	private LeaderboardServiceImpl ls;
-
+	
 	@Autowired
-	public FrontController(UserServiceImpl us, WorkoutServiceImpl ws, LeaderboardServiceImpl ls) {
+	public FrontController(UserServiceImpl us, WorkoutServiceImpl ws, LeaderboardServiceImpl ls  ) {
 		this.us = us;
 		this.ws = ws;
 		this.ls = ls;
 	}
-
-	/************** GET *********************/
+	
+	/**************GET*********************/
 	// All Users
 	@GetMapping(produces = "application/json", path = "/users")
 	public ArrayList<User> getAllUsers() {
 		return us.getAll();
 	}
-
+	
 	// All Workouts
 	@GetMapping(produces = "application/json", path = "/workouts")
 	public ArrayList<Workout> getAllWorkouts() {
 		return ws.getAll();
 	}
-
-	// Leaderboard
-	@GetMapping(produces = "application/json", path = "/leaderboard")
-	public User[] getLeaderboard() throws SQLException {
+	//Leaderboard
+	@GetMapping(produces ="application/json",path ="/leaderboard")
+	public User[] getLeaderboard() throws SQLException{
 		return ls.getLeaderboard();
 	}
-
-	// Get User info by id
-	@GetMapping(produces = "application/json", path = "/vault/{id}")
-	public User getUser(@PathVariable("id") int id) {
-		return us.getById(id);
-	}
-
-	/************* POST *******************/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*************POST*******************/
 	// User Login
-	@PostMapping(produces = "application/json", path = "/user-login", consumes = "application/json")
+	@PostMapping(produces = "application/json", path = "/user-login", consumes= "application/json")
 	public User loginUser(@RequestBody User u) {
 		System.out.println("this is req" + u);
 		return us.login(u.getUsername(), u.getPassword());
 	}
-
+	
 }
