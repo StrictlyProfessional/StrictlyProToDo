@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ import com.revature.services.WorkoutServiceImpl;
 
 @RestController
 @RequestMapping(path = "/strictly")
-@CrossOrigin(allowCredentials = "true", origins = "http://localhost:8080")
+@CrossOrigin(allowCredentials = "true", origins = "http://localhost:4200")
 public class FrontController {
 	
 	private UserServiceImpl us;
@@ -53,7 +54,10 @@ public class FrontController {
 		return ls.getLeaderboard();
 	}
 	
-	
+	@GetMapping(produces ="application/json",path ="/vault/{id}")
+	public User getUserById(@PathVariable("id") int id) {
+		return us.getById(id);
+	}
 	
 	
 	
