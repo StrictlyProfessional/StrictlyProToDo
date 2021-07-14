@@ -2,9 +2,10 @@ HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
+!**/src/main/resources/
 !**/src/test/**/target/
-application.properties
-hibernate.cfg.xml
+*.properties
+*.cfg.xml
 
 ### STS ###
 .apt_generated
