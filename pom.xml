@@ -13,7 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>StrictlyProToDo</name>
-	<description>Backend for Project 2</description>
+	<description>Backend for Project 2 StrictlyPro</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
