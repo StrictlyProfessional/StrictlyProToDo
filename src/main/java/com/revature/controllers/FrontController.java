@@ -64,12 +64,6 @@ public class FrontController {
 		return ws.getAll();
 	}
 	
-	// DELETE THIS
-	@GetMapping(produces = "application/json", path = "/workoutsTwo")
-	public ArrayList<Workout> getAllWorkoutsTwo() {
-		return ws.getAll();
-	}
-	
 	//Leaderboard
 	@GetMapping(produces ="application/json",path ="/leaderboard")
 	public User[] getLeaderboard() throws SQLException{
