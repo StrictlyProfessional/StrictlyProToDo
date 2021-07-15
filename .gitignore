@@ -4,8 +4,6 @@ target/
 !**/src/main/**/target/
 !**/src/main/resources/
 !**/src/test/**/target/
-*.properties
-*.cfg.xml
 
 ### STS ###
 .apt_generated
