@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.beans.Exercise;
 import com.revature.beans.User;
 import com.revature.beans.Workout;
 import com.revature.repos.LeaderboardRepo;
@@ -28,12 +29,14 @@ public class FrontController {
 	private UserServiceImpl us;
 	private WorkoutServiceImpl ws;
 	private LeaderboardServiceImpl ls;
+	private ExerciseServiceImpl es;
 	
 	@Autowired
-	public FrontController(UserServiceImpl us, WorkoutServiceImpl ws, LeaderboardServiceImpl ls  ) {
+	public FrontController(UserServiceImpl us, WorkoutServiceImpl ws, LeaderboardServiceImpl ls, ExerciseServiceImpl es  ) {
 		this.us = us;
 		this.ws = ws;
 		this.ls = ls;
+		this.es = es;
 	}
 	
 	/**************GET*********************/
@@ -41,6 +44,18 @@ public class FrontController {
 	@GetMapping(produces = "application/json", path = "/users")
 	public ArrayList<User> getAllUsers() {
 		return us.getAll();
+	}
+	
+	// Hector's - Get a specific User
+	@GetMapping(produces = "application/json", path = "/users/{id}")
+	public User DiscoverygetUserById(@PathVariable("id") int id) {
+		return us.getById(id);
+	}
+			
+	// Hector's - Get all Exercises
+	@GetMapping(produces="application/json", path = "exercises")
+	public ArrayList<Exercise> getAllExercises() {
+		return es.getAll();
 	}
 	
 	// All Workouts
@@ -58,14 +73,6 @@ public class FrontController {
 	public User getUserById(@PathVariable("id") int id) {
 		return us.getById(id);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	/*************POST*******************/
 	// User Login

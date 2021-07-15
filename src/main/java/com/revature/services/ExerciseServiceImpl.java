@@ -25,7 +25,7 @@ public class ExerciseServiceImpl implements GenericService<Exercise> {
 
 	@Override
 	public ArrayList<Exercise> getAll() {
-		return null;
+		return (ArrayList<Exercise>) er.findAll();
 	}
 
 	@Override
