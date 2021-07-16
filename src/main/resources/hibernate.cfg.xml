@@ -7,10 +7,10 @@
 
         <!-- Set up connection info -->
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://firstdb.clxi91edpc7j.us-east-2.rds.amazonaws.com:5432/postgres</property>
-        <property name="hibernate.connection.username">Hector</property>
-        <property name="hibernate.connection.password">password</property>
-		<property name="hibernate.default_schema">project2</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://newbadboy.clxi91edpc7j.us-east-2.rds.amazonaws.com:5432/postgres</property>
+        <property name="hibernate.connection.username">OmegaPrime</property>
+        <property name="hibernate.connection.password">GoAwayHackers420!!?</property>
+		<property name="hibernate.default_schema">public</property>
 
         <!-- Hibernate Setup -->
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
