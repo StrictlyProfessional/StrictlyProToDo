@@ -20,8 +20,7 @@ public class WorkoutServiceImpl implements GenericService<Workout> {
 
 	@Override
 	public Workout getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return wr.findById(id).get();
 	}
 
 	@Override
@@ -31,20 +30,23 @@ public class WorkoutServiceImpl implements GenericService<Workout> {
 
 	@Override
 	public Workout add(Workout u) {
-		// TODO Auto-generated method stub
-		return null;
+		return wr.save(u);
 	}
 
 	@Override
 	public Workout update(Workout u) {
-		// TODO Auto-generated method stub
-		return null;
+		return wr.save(u);
 	}
 
 	@Override
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			wr.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

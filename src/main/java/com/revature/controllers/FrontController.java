@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,10 +60,35 @@ public class FrontController {
 		return es.getAll();
 	}
 	
-	// All Workouts
+	// get all workouts
 	@GetMapping(produces = "application/json", path = "/workouts")
 	public ArrayList<Workout> getAllWorkouts() {
 		return ws.getAll();
+	}
+	
+	// get workout by id
+	@GetMapping(produces = "application/json", path = "/workouts/{id}")
+	public Workout getWorkoutById(@PathVariable("id") int id) {
+		return ws.getById(id);
+	}
+	
+	// add workout
+	@PostMapping(produces = "application/json", consumes= "application/json", path="/workouts")
+	public Workout add(@RequestBody Workout w) {
+		System.out.println(w);
+		return ws.add(w);
+	}
+	
+	// update workout
+	@PutMapping(produces = "application/json", consumes= "application/json", path="/workouts/{id}")
+	public Workout update(@RequestBody Workout w) {
+		return ws.update(w);
+	}
+	
+	// delete workout
+	@DeleteMapping(path="/workouts/{id}")
+	public boolean delete(@PathVariable("id") int id) {
+		return ws.delete(id);
 	}
 	
 	//Leaderboard
