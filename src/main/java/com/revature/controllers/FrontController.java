@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -57,6 +58,12 @@ public class FrontController {
 	public User DiscoverygetUserById(@PathVariable("id") int id) {
 		return us.getById(id);
 	}
+	
+	// update user
+	@PostMapping(produces = "application/json", consumes= "application/json", path="/users/update")
+	public User updateUser(@RequestBody User u) {
+		return us.update(u);
+	}
 			
 	// Hector's - Get all Exercises
 	@GetMapping(produces="application/json", path = "/exercises")
@@ -84,20 +91,19 @@ public class FrontController {
 	}
 	
 	// add workout
-	@PostMapping(produces = "application/json", consumes= "application/json", path="/workouts")
+	@PostMapping(produces = "application/json", consumes= "application/json", path="/workouts/add")
 	public Workout add(@RequestBody Workout w) {
-		System.out.println(w);
 		return ws.add(w);
 	}
 	
 	// update workout
-	@PutMapping(produces = "application/json", consumes= "application/json", path="/workouts/{id}")
+	@PostMapping(produces = "application/json", consumes= "application/json", path="/workouts/update")
 	public Workout update(@RequestBody Workout w) {
 		return ws.update(w);
 	}
 	
 	// delete workout
-	@DeleteMapping(path="/workouts/{id}")
+	@PostMapping(consumes="application/json", produces="application/json", path="/workouts/delete")
 	public boolean delete(@PathVariable("id") int id) {
 		return ws.delete(id);
 	}
