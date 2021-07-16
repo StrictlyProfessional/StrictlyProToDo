@@ -71,11 +71,16 @@ public class FrontController {
 		return es.getAll();
 	}
 	
-
 	// Hector's - Get all Custom Exercises
 	@GetMapping(produces="application/json", path = "/customExercises")
 	public ArrayList<CustomExercise> getAllCustomExercises() {
 		return ces.getAll();
+	}
+	
+	// Hector's - Add a Custom Exercise
+	@PostMapping(produces = "application/json", consumes= "application/json", path="/customExercises/add")
+	public CustomExercise addCustomExercise(@RequestBody CustomExercise fresh) {
+		return ces.add(fresh);
 	}
 	
 	// All Workouts
