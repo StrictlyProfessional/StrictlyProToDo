@@ -7,9 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.beans.CustomExercise;
+import com.revature.repos.CustomExerciseRepo;
 
+@Service
 public class CustomExerciseImpl implements GenericService<CustomExercise> {
 
+	private CustomExerciseRepo cer;
+	
+	@Autowired
+	public CustomExerciseImpl(CustomExerciseRepo cer) {
+		this.cer = cer;
+	}
+	
 	@Override
 	public CustomExercise getById(int id) {
 		// TODO Auto-generated method stub
@@ -18,8 +27,7 @@ public class CustomExerciseImpl implements GenericService<CustomExercise> {
 
 	@Override
 	public ArrayList<CustomExercise> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return (ArrayList<CustomExercise>) cer.findAll();
 	}
 
 	@Override
