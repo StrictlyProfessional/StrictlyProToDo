@@ -132,4 +132,10 @@ public class FrontController {
 		return us.login(u.getUsername(), u.getPassword());
 	}
 	
+	@PostMapping(produces = "application/json", path = "/register", consumes = "application/json")
+	public User registerUser(@RequestBody User u) {
+		System.out.println("Registering user: " + u);
+		return us.add(u);
+	}
+	
 }
