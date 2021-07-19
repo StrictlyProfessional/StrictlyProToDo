@@ -83,6 +83,12 @@ public class FrontController {
 		return ces.add(fresh);
 	}
 	
+	@PostMapping(produces = "application/json", consumes= "application/json", path = "/customExercises/update")
+	public CustomExercise updateCustomExercise(@RequestBody CustomExercise ce) {
+		System.out.println("Editing exercise: " + ce);
+		return ces.update(ce);
+	}
+	
 	// All Workouts
 	@GetMapping(produces = "application/json", path = "/workouts")
 	public ArrayList<Workout> getAllWorkouts() {
@@ -132,6 +138,7 @@ public class FrontController {
 		return us.login(u.getUsername(), u.getPassword());
 	}
 	
+	// User Register
 	@PostMapping(produces = "application/json", path = "/register", consumes = "application/json")
 	public User registerUser(@RequestBody User u) {
 		System.out.println("Registering user: " + u);

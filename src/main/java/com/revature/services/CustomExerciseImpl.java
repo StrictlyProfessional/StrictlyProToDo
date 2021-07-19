@@ -37,8 +37,7 @@ public class CustomExerciseImpl implements GenericService<CustomExercise> {
 
 	@Override
 	public CustomExercise update(CustomExercise u) {
-		// TODO Auto-generated method stub
-		return null;
+		return cer.save(u);
 	}
 
 	@Override
