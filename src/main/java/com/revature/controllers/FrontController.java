@@ -89,10 +89,16 @@ public class FrontController {
 		return ces.add(fresh);
 	}
 	
+
 	@PostMapping(produces = "application/json", consumes= "application/json", path = "/customExercises/update")
 	public CustomExercise updateCustomExercise(@RequestBody CustomExercise ce) {
 		System.out.println("Editing exercise: " + ce);
 		return ces.update(ce);
+	}
+	
+	@PostMapping(produces = "application/json", consumes= "application/json", path="/customExercises/delete/{id}")
+	public boolean deleteCustomExercise(@PathVariable("id") int id) {
+		return ces.delete(id);
 	}
 	
 	// All Workouts
@@ -121,8 +127,8 @@ public class FrontController {
 	
 	// delete workout
 	@PostMapping(consumes="application/json", produces="application/json", path="/workouts/delete")
-	public boolean delete(@PathVariable("id") int id) {
-		return ws.delete(id);
+	public void delete(@RequestBody Workout w) {
+		ws.delete(w);
 	}
 	
 	//Leaderboard
