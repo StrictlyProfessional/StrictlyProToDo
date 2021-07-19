@@ -39,15 +39,20 @@ public class WorkoutServiceImpl implements GenericService<Workout> {
 	}
 
 
-	public void delete(Workout w) {
-			wr.delete(w);
-		
-	}
+//	public void deleteWorkout(Workout w) {
+//			wr.delete(w);
+//		
+//	}
 
 	@Override
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			wr.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

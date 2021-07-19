@@ -128,7 +128,7 @@ public class FrontController {
 	// delete workout
 	@PostMapping(consumes="application/json", produces="application/json", path="/workouts/delete")
 	public void delete(@RequestBody Workout w) {
-		ws.delete(w);
+		ws.delete(w.getId());
 	}
 	
 	//Leaderboard
