@@ -71,6 +71,12 @@ public class FrontController {
 		return es.getAll();
 	}
 	
+	// Matt's - Add a Custom Exercise
+	@PostMapping(produces = "application/json", consumes= "application/json", path="/exercises/add")
+	public Exercise addExercise(@RequestBody Exercise fresh) {
+		return es.add(fresh);
+	}
+	
 	// Hector's - Get all Custom Exercises
 	@GetMapping(produces="application/json", path = "/customExercises")
 	public ArrayList<CustomExercise> getAllCustomExercises() {

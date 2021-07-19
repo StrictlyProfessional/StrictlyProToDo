@@ -30,8 +30,7 @@ public class ExerciseServiceImpl implements GenericService<Exercise> {
 
 	@Override
 	public Exercise add(Exercise u) {
-		// TODO Auto-generated method stub
-		return null;
+		return er.save(u);
 	}
 
 	@Override

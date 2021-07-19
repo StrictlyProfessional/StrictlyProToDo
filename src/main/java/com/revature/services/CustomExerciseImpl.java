@@ -42,8 +42,8 @@ public class CustomExerciseImpl implements GenericService<CustomExercise> {
 
 	@Override
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		cer.deleteById(id);
+		return true;
 	}
 
 }
