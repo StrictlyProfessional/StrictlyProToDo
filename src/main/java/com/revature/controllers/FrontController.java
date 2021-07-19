@@ -28,7 +28,7 @@ import com.revature.services.WorkoutServiceImpl;
 
 @RestController
 @RequestMapping(path = "/strictly")
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true", origins = "http://localhost:4200")
 public class FrontController {
 	
 	private UserServiceImpl us;
