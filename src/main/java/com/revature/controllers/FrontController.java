@@ -28,7 +28,7 @@ import com.revature.services.WorkoutServiceImpl;
 
 @RestController
 @RequestMapping(path = "/strictly")
-@CrossOrigin
+@CrossOrigin(origins = {"https://localhost:4200/", "http://strictly-pro-client.s3-website-us-east-1.amazonaws.com/"})
 public class FrontController {
 	
 	private UserServiceImpl us;
