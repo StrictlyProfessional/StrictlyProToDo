@@ -28,7 +28,7 @@ import com.revature.services.WorkoutServiceImpl;
 
 @RestController
 @RequestMapping(path = "/strictly")
-@CrossOrigin()
+@CrossOrigin
 public class FrontController {
 	
 	private UserServiceImpl us;
